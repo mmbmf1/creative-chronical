@@ -1,0 +1,12 @@
+{
+  "name": "creative-chronical",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "repository": "https://github.com/mmbmf1/creative-chronical.git",
+  "author": "Michael Mace <michael.mace@conexon.us>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
