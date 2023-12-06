@@ -1,8 +1,7 @@
 const express = require('express')
-const pug = require('pug')
-
 const app = express()
 
+app.use(express.static(__dirname + '/views'))
 app.set('view engine', 'pug')
 
 app.get('/api', (req, res) => {
