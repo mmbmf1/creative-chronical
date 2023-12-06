@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MM - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="mx-4">
+    <div>
+      <header class="my-4 border-b">
+        <nav class="py-2">
+          <a
+            class="text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
+            hx-get="/api/about"
+            hx-target="#container"
+            href="#about"
+            >About</a
+          >
+          <a
+            class="text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
+            hx-get="/api/projects"
+            hx-target="#container"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
+            hx-get="/api/contact"
+            hx-target="#container"
+            href="#contact"
+            >Contact</a
+          >
+        </nav>
+      </header>
+      <section id="container" hx-get="/api" hx-trigger="load"></section>
+    </div>
+    <footer class="fixed bottom-0 my-2">
+      <p>Copyright © 2022 Michael Mace</p>
+    </footer>
+  </body>
+</html>
