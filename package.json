@@ -6,6 +6,7 @@
   "repository": "https://github.com/mmbmf1/creative-chronical.git",
   "author": "mmbmf1",
   "dependencies": {
-    "express": "4.18.2"
+    "express": "4.18.2",
+    "pug": "3.0.2"
   }
 }
