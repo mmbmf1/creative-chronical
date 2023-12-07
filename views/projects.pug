@@ -1,12 +1,15 @@
 .py-20
-  h1.w-full.mb-2.text-center #{name}
+  h1.w-full.mb-2.text-center.text-3xl #{ name }
   .w-full.flex.flex-row.justify-center
-    p.arrow.self-center.mr-10.cursor-pointer.text-4xl <
-    img.h-80.w-96.rounded-md(
-      src=image_url
-    )
-    p.arrow.self-center.ml-10.cursor-pointer.text-4xl >
-
+    p.arrow.self-center.mr-10.cursor-pointer.text-4xl(
+      hx-get=`/api/projects?id=${prev_id}&prev=`,
+      hx-target='#container'
+    ) <
+    img.h-80.w-96.rounded-md(src=image_url)
+    p.arrow.self-center.ml-10.cursor-pointer.text-4xl(
+      hx-get=`/api/projects?id=${next_id}&next=`,
+      hx-target='#container'
+    ) >
 
     //- h2.text-2xl As a professional
     //- ul

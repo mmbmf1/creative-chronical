@@ -20,14 +20,33 @@ app.get('/api/about', (req, res) => {
 })
 
 app.get('/api/projects', (req, res) => {
-  console.log('projects', projects)
-  console.log('match on a project id')
+  const { id } = req.query
+
+  const last_project_id = projects[projects.length - 1].id
+
+  let data = projects.find((project) => project.id === Number(id))
+
+  if (!data) {
+    console.log('err')
+  }
+
+  data.next_id = Number(id) + 1
+  data.prev_id = Number(id) - 1
+
+  if (Number(id) === 1) {
+    data.prev_id = last_project_id
+  }
+
+  if (Number(id) === last_project_id) {
+    data.next_id = 1
+  }
+
+  const project = pug.compileFile('views/projects.pug')
+
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
 
-  const project_list = pug.compileFile('views/projects.pug')
-
-  res.send(project_list(projects[0]))
+  res.send(project(data))
 })
 
 app.get('/api/contact', (req, res) => {
