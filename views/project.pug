@@ -1,17 +1,3 @@
-style.
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  .fade-in {
-    animation-name: fadeIn;
-    animation-duration: 2s;
-  }
-
 .py-20
   .w-full.flex.flex-row.justify-center
     i.ph.ph-caret-left.arrow.self-center.mr-10.cursor-pointer.text-slate-300.text-5xl.font-extrabold(
@@ -20,7 +6,7 @@ style.
       hx-target='#container'
     )
     #image(class='w-[40rem] h-[30rem]')
-      img.w-full.h-full.rounded-md.cursor-pointer.fade-in(
+      img.w-full.h-full.rounded-md.cursor-pointer(
         class='hover:border-4 hover:border-slate-500',
         src=image_url,
         hx-get=`/api/details?id=${id}`,
