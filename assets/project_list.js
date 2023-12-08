@@ -12,12 +12,12 @@ const projects = [
   {
     id: 3,
     name: 'third project',
-    image_url: 'https://picsum.photos/id/22/1108/933',
+    image_url: 'https://picsum.photos/id/22/625/415',
   },
   {
     id: 4,
     name: 'n project',
-    image_url: 'https://picsum.photos/id/11/1108/933',
+    image_url: 'https://picsum.photos/id/11/625/415',
   },
 ]
 

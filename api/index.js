@@ -25,7 +25,7 @@ app.get('/api/about', (req, res) => {
   res.render('about')
 })
 
-app.get('/api/projects', (req, res) => {
+app.get('/api/project', (req, res) => {
   const { id } = req.query
 
   const last_project_id = projects[projects.length - 1].id
@@ -47,7 +47,7 @@ app.get('/api/projects', (req, res) => {
     data.next_id = 1
   }
 
-  const project = pug.compileFile('views/projects.pug')
+  const project = pug.compileFile('views/project.pug')
 
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')

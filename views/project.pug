@@ -17,12 +17,14 @@ style.
   .w-full.flex.flex-row.justify-center
     i.ph.ph-caret-left.arrow.self-center.mr-10.cursor-pointer.text-gray-300.text-4xl.font-extrabold(
       class='hover:scale-110',
-      hx-get=`/api/projects?id=${prev_id}&prev=`,
+      hx-get=`/api/project?id=${prev_id}&prev=`,
       hx-target='#container'
-    ) 
-    img.h-80.w-96.rounded-md.cursor-pointer.fade-in(src=image_url)
+    )
+    div(class='w-[40rem] h-[30rem]')
+      img.rounded-md.cursor-pointer.fade-in(src=image_url)
+      p.mt-4.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis, libero eu ornare auctor, est lacus convallis mi, a laoreet risus nulla in nunc.
     i.ph.ph-caret-right.arrow.self-center.ml-10.cursor-pointer.text-gray-300.text-4xl.font-extrabold(
       class='hover:scale-110',
-      hx-get=`/api/projects?id=${next_id}&next=`,
+      hx-get=`/api/project?id=${next_id}&next=`,
       hx-target='#container'
     )
