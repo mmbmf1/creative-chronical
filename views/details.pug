@@ -4,8 +4,14 @@
     hx-target='#container'
   )
     i.ph.ph-x-circle.text-xl.text-red-700
-  h1.text-3xl Summary
+  h1.text-3xl.mb-4 #{name}
   p.my-4.leading-5.text-lg #{ summary }
-  h1.text-3xl Technology
-  p.my-4.leading-5.text-lg #{ tech }
-  a.text-blue-700(class='hover:text-blue-500 hover:underline', href='/') GitHub Link
+  h1.text-2xl Technology
+  ul
+  each item in tech
+    li.ml-4.my-4.leading-5.text-lg= item
+  a.cursor-pointer.text-blue-700.text-xl(
+    class='hover:text-blue-500 hover:underline',
+    hx-get='/api',
+    hx-target='#container'
+  ) GitHub Link

@@ -34,7 +34,7 @@ app.get('/api/project', (req, res) => {
   let data = projects.find((project) => project.id === Number(id))
 
   if (!data) {
-    console.log('err')
+    console.log('There was a problem getting the project.')
   }
 
   data.next_id = Number(id) + 1
@@ -59,7 +59,17 @@ app.get('/api/project', (req, res) => {
 app.get('/api/details', (req, res) => {
   const { id } = req.query
 
-  const data = details.find(({ id: project_id }) => project_id === Number(id))
+  let data = details.find(({ id: project_id }) => project_id === Number(id))
+
+  if (!data) {
+    console.log('There was a problem getting the project details.')
+  }
+
+  const { name } = projects.find(
+    ({ id: project_id }) => project_id === Number(id)
+  )
+
+  data.name = name
 
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
