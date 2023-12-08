@@ -13,15 +13,15 @@ style.
   }
 
 .py-20
-  h1.w-full.mb-4.text-center.text-3xl #{ name }
+  h1.w-full.mb-4.text-gray-500.text-center.text-3xl #{ name }
   .w-full.flex.flex-row.justify-center
-    i.ph.ph-caret-left.arrow.self-center.mr-10.cursor-pointer.text-4xl.font-extrabold(
+    i.ph.ph-caret-left.arrow.self-center.mr-10.cursor-pointer.text-gray-300.text-4xl.font-extrabold(
       class='hover:scale-110',
       hx-get=`/api/projects?id=${prev_id}&prev=`,
       hx-target='#container'
     ) 
     img.h-80.w-96.rounded-md.cursor-pointer.fade-in(src=image_url)
-    i.ph.ph-caret-right.arrow.self-center.ml-10.cursor-pointer.text-4xl.font-extrabold(
+    i.ph.ph-caret-right.arrow.self-center.ml-10.cursor-pointer.text-gray-300.text-4xl.font-extrabold(
       class='hover:scale-110',
       hx-get=`/api/projects?id=${next_id}&next=`,
       hx-target='#container'
