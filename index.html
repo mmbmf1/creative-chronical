@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MM - Portfolio</title>
+    <title>Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script
       src="https://unpkg.com/htmx.org@1.9.9"
@@ -14,42 +14,11 @@
   </head>
   <body class="mx-4">
     <div>
-      <header class="my-4 border-b">
-        <nav class="py-2 flex justify-between">
-          <div>
-            <a
-              class="cursor-pointer text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
-              hx-get="/api"
-              hx-target="#container"
-              >Michael Mace</a
-            >
-          </div>
-          <div>
-            <a
-              class="cursor-pointer text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
-              hx-get="/api/about"
-              hx-target="#container"
-              >About</a
-            >
-            <a
-              class="cursor-pointer text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
-              hx-get="/api/projects?id=1"
-              hx-target="#container"
-              >Projects</a
-            >
-            <a
-              class="cursor-pointer text-blue-700 pb-2 border-b-2 border-transparent hover:border-blue-500 hover:text-blue-500 mr-6"
-              hx-get="/api/contact"
-              hx-target="#container"
-              >Contact</a
-            >
-          </div>
-        </nav>
-      </header>
+      <div id="nav" hx-get="/api/nav" hx-trigger="load" hx-targer="nav"></div>
       <section id="container" hx-get="/api" hx-trigger="load"></section>
     </div>
     <footer class="fixed bottom-0 my-2">
-      <p>Copyright © 2023 Michael Mace</p>
+      <p>Copyright © 2023 First Last</p>
     </footer>
   </body>
 </html>

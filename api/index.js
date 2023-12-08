@@ -13,6 +13,12 @@ app.get('/api', (req, res) => {
   res.render('index')
 })
 
+app.get('/api/nav', (req, res) => {
+  res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+  res.render('nav')
+})
+
 app.get('/api/about', (req, res) => {
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
