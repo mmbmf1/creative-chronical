@@ -1,0 +1,22 @@
+header.my-4.pb-4.border-b.border-slate-300
+  nav
+    a.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.border-transparent.mr-6(
+      class='hover:border-blue-500 hover:text-blue-500',
+      hx-get='/api',
+      hx-target='#container'
+    ) First Last
+    a.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.border-transparent.mr-6(
+      class='hover:border-blue-500 hover:text-blue-500',
+      hx-get='/api/about',
+      hx-target='#container'
+    ) About
+    a.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.border-transparent.mr-6(
+      class='hover:border-blue-500 hover:text-blue-500',
+      hx-get='/api/project?id=1',
+      hx-target='#container'
+    ) Projects
+    a.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.border-transparent.mr-6(
+      class='hover:border-blue-500 hover:text-blue-500',
+      hx-get='/api/contact',
+      hx-target='#container'
+    ) Contact
