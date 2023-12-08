@@ -20,9 +20,13 @@ style.
       hx-get=`/api/project?id=${prev_id}&prev=`,
       hx-target='#container'
     )
-    div(class='w-[40rem] h-[30rem]')
-      img.rounded-md.cursor-pointer.fade-in(src=image_url)
-      p.mt-4.text-center Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis, libero eu ornare auctor, est lacus convallis mi, a laoreet risus nulla in nunc.
+    #image(class='w-[40rem] h-[30rem]')
+      img.w-full.h-full.rounded-md.cursor-pointer.fade-in(
+        class="hover:scale-105"
+        src=image_url,
+        hx-get=`/api/details?id=${id}`,
+        hx-target='#image'
+      )
     i.ph.ph-caret-right.arrow.self-center.ml-10.cursor-pointer.text-gray-300.text-4xl.font-extrabold(
       class='hover:scale-110',
       hx-get=`/api/project?id=${next_id}&next=`,
