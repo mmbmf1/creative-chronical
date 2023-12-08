@@ -1,20 +1,20 @@
 .py-20
   .w-full.flex.flex-row.justify-center
     i.ph.ph-caret-left.arrow.self-center.mr-10.cursor-pointer.text-slate-300.text-5xl.font-extrabold(
-      class='hover:scale-110 hover:text-slate-700',
+      class='hover:scale-110 hover:text-slate-500',
       hx-get=`/api/project?id=${prev_id}&prev=`,
       hx-target='#container'
     )
     #image(class='w-[40rem] h-[30rem]')
-      img.w-full.h-full.rounded-md.cursor-pointer(
+      img.w-full.h-full.rounded-md.cursor-pointer.border-4.border-transparent(
         class='hover:border-4 hover:border-slate-500',
         src=image_url,
         hx-get=`/api/details?id=${id}`,
         hx-target='#image'
       )
-      p.w-full.mt-4.text-slate-500.text-center.text-3xl #{ name }
+      p.w-full.mt-4.text-slate-500.text-center.text-3xl.cursor-default #{ name }
     i.ph.ph-caret-right.arrow.self-center.ml-10.cursor-pointer.text-slate-300.text-5xl.font-extrabold(
-      class='hover:scale-110 hover:text-slate-700',
+      class='hover:scale-110 hover:text-slate-500',
       hx-get=`/api/project?id=${next_id}&next=`,
       hx-target='#container'
     )
