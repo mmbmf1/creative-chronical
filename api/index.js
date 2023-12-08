@@ -60,7 +60,6 @@ app.get('/api/details', (req, res) => {
   const { id } = req.query
 
   const data = details.find(({ id: project_id }) => project_id === Number(id))
-  console.log('👀 🔍 ~ file: index.js:63 ~ app.get ~ data:', data)
 
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
