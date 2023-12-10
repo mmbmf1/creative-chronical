@@ -8,6 +8,10 @@ import details from '../assets/details'
 app.set('views', path.join(__dirname, '../views'))
 app.set('view engine', 'pug')
 
+function getData(data, id) {
+  return data.find(({ id: project_id }) => project_id === Number(id))
+}
+
 app.get('/api', (req, res) => {
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
@@ -31,7 +35,7 @@ app.get('/api/project', (req, res) => {
 
   const last_project_id = projects[projects.length - 1].id
 
-  let data = projects.find((project) => project.id === Number(id))
+  let data = getData(projects, id)
 
   if (!data) {
     console.log('There was a problem getting the project.')
@@ -59,15 +63,13 @@ app.get('/api/project', (req, res) => {
 app.get('/api/details', (req, res) => {
   const { id } = req.query
 
-  let data = details.find(({ id: project_id }) => project_id === Number(id))
+  let data = getData(details, id)
 
   if (!data) {
     console.log('There was a problem getting the project details.')
   }
 
-  const { name } = projects.find(
-    ({ id: project_id }) => project_id === Number(id)
-  )
+  const { name } = getData(projects, id)
 
   data.name = name
 
