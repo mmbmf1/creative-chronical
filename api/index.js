@@ -31,7 +31,7 @@ app.get('/api/project', (req, res) => {
 
   const last_project_id = projects[projects.length - 1].id
 
-  let data = projects.find((project) => project.id === Number(id))
+  let data = projects.find(({ id: project_id }) => project_id === Number(id))
 
   if (!data) {
     console.log('There was a problem getting the project.')
