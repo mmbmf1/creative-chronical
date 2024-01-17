@@ -1,0 +1,9 @@
+img.cursor-pointer.rounded-md(
+  class='hover:border-2 hover:border-gray-300',
+  src=image_url,
+  alt='',
+  hx-get=`/api/details?id=${id}&page=${current_page}`,
+  hx-trigger='click',
+  hx-target=`#projectImage${id}`,
+  hx-indicator=`#loading${id}`
+)
