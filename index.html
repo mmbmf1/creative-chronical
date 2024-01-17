@@ -3,15 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
+    <title>Lorem ipsum</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="assets/htmx.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
   </head>
   <body class="mx-4">
-    <div>
-      <div id="nav" hx-get="/api/nav" hx-trigger="load"></div>
-      <section id="container" hx-get="/api" hx-trigger="load"></section>
-    </div>
+    <div id="nav" hx-get="/api/nav" hx-trigger="load"></div>
+    <section id="container" hx-get="/api" hx-trigger="load"></section>
   </body>
 </html>
