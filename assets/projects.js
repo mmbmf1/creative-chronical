@@ -74,11 +74,6 @@ const projects = [
     name: 'n project',
     image_url: 'https://picsum.photos/id/11/625/415',
   },
-  {
-    id: 16,
-    name: 'n project',
-    image_url: 'https://picsum.photos/id/11/625/415',
-  },
 ]
 
 export default projects

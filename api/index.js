@@ -31,12 +31,24 @@ app.get('/api/about', (req, res) => {
 })
 
 app.get('/api/projects', (req, res) => {
+  const { page } = req.query
+
+  const itemsPerPage = 6
+  const startIndex = (page - 1) * itemsPerPage
+  const endIndex = page * itemsPerPage
+  const pagedProjects = projects.slice(startIndex, endIndex)
+
+  const totalPages = Math.ceil(projects.length / itemsPerPage)
+  const paginationLinks = Array.from({ length: totalPages }, (_, i) => i + 1)
+
   const projectsArray = pug.compileFile('views/projects.pug')
 
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
 
-  res.send(projectsArray({ projects }))
+  res.send(
+    projectsArray({ projects: pagedProjects, pagination: paginationLinks })
+  )
 })
 
 app.get('/api/project', (req, res) => {
