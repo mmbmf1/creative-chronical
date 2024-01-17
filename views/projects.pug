@@ -1,2 +1,7 @@
-each project in projects
-  h1 #{ project.name }
+h1.text-2xl.mb-10 Projects
+ul.grid.grid-cols-4.gap-4
+  each project in projects
+    li.relative
+      div
+      img(src=project.image_url, alt='')
+      p.leading-5 #{project.name}
