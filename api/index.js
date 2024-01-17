@@ -30,6 +30,15 @@ app.get('/api/about', (req, res) => {
   res.render('about')
 })
 
+app.get('/api/projects', (req, res) => {
+  const projectsArray = pug.compileFile('views/projects.pug')
+
+  res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+
+  res.send(projectsArray({ projects }))
+})
+
 app.get('/api/project', (req, res) => {
   const { id } = req.query
 
