@@ -1,0 +1,24 @@
+.flex.items-center.mr-4
+  h1.text-3xl Projects
+  .ml-auto
+    each page in pagination
+      a.cursor-pointer.text-lg.text-blue-700.pb-1.border-b-2.border-transparent.ml-2(
+        class='hover:border-blue-500 hover:text-blue-500',
+        hx-get=`/api/projects?page=${page}`,
+        hx-target='#container'
+      )= page
+ul.grid.grid-cols-3.gap-4.mt-4
+  each project in projects
+    li.relative
+      .flex
+        p.leading-5.htmx-indicator(id=`loading${project.id}`) Loading...
+      .image-container.rounded-md(id=`projectImage${project.id}`)
+        img.cursor-pointer.rounded-md(
+          class='hover:border-2 hover:border-gray-300',
+          src=project.image_url,
+          alt='',
+          hx-get=`/api/details?id=${project.id}&page=${current_page}`,
+          hx-trigger='click',
+          hx-target=`#projectImage${project.id}`,
+          hx-indicator=`#loading${project.id}`
+        )

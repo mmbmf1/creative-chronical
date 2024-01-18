@@ -1,17 +1,19 @@
-.h-full.w-full.p-4.border-4.border-slate-500.rounded-md
-  p.cursor-pointer.w-full.text-right.leading-1(
-    hx-get=`/api/project?id=${id}`,
-    hx-target='#container'
+.w-full.text-right
+  i.ph.ph-x-circle.text-xl.text-red-700.cursor-pointer(
+    hx-get=`/api/image?id=${id}&page=${current_page}`,
+    hx-trigger='click',
+    hx-target=`#projectImage${id}`,
+    hx-indicator=`#loading${id}`
   )
-    i.ph.ph-x-circle.text-xl.text-red-700
-  h1.text-3xl.mb-4 #{ name }
-  p.my-4.leading-5.text-lg #{ summary }
-  h1.text-2xl Technology
-  ul
-  each item in tech
-    li.ml-4.my-4.leading-5.text-lg= item
-  a.cursor-pointer.text-blue-700.text-xl(
+.h-52.overflow-y-auto
+  p.leading-5.mb-2 #{ name }
+  a.cursor-pointer.text-blue-700(
     class='hover:text-blue-500 hover:underline',
     hx-get='/api',
     hx-target='#container'
   ) GitHub Link
+  h1.text-1xl.mt-1 Technology
+  ul.flex.flex-row
+    each item in tech
+      li.my-2.mr-2.leading-5= item
+  p.my-4.leading-5 #{ summary }

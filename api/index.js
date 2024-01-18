@@ -30,6 +30,31 @@ app.get('/api/about', (req, res) => {
   res.render('about')
 })
 
+app.get('/api/projects', (req, res) => {
+  const { page } = req.query
+
+  const itemsPerPage = 6
+  const startIndex = (page - 1) * itemsPerPage
+  const endIndex = page * itemsPerPage
+  const pagedProjects = projects.slice(startIndex, endIndex)
+
+  const totalPages = Math.ceil(projects.length / itemsPerPage)
+  const paginationLinks = Array.from({ length: totalPages }, (_, i) => i + 1)
+
+  const projectsArray = pug.compileFile('views/projects.pug')
+
+  res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+
+  res.send(
+    projectsArray({
+      projects: pagedProjects,
+      pagination: paginationLinks,
+      current_page: page,
+    })
+  )
+})
+
 app.get('/api/project', (req, res) => {
   const { id } = req.query
 
@@ -61,7 +86,7 @@ app.get('/api/project', (req, res) => {
 })
 
 app.get('/api/details', (req, res) => {
-  const { id } = req.query
+  const { id, page } = req.query
 
   let data = getData(details, id)
 
@@ -69,9 +94,17 @@ app.get('/api/details', (req, res) => {
     console.log('There was a problem getting the project details.')
   }
 
-  const { name } = getData(projects, id)
+  const { name, image_url } = getData(projects, id)
+
+  if (req.query.image) {
+    const image = pug.compileFile('views/image.pug')
+    res.send(image(image_url))
+    return
+  }
 
   data.name = name
+  data.image_url = image_url
+  data.current_page = page
 
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
@@ -79,6 +112,19 @@ app.get('/api/details', (req, res) => {
   const project = pug.compileFile('views/details.pug')
 
   res.send(project(data))
+})
+
+app.get('/api/image', (req, res) => {
+  const { id, page } = req.query
+
+  const { image_url } = getData(projects, id)
+
+  res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+
+  const image = pug.compileFile('views/image.pug')
+
+  res.send(image({ image_url, id, current_page: page }))
 })
 
 app.get('/api/contact', (req, res) => {
