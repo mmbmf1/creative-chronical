@@ -55,36 +55,6 @@ app.get('/api/projects', (req, res) => {
   )
 })
 
-app.get('/api/project', (req, res) => {
-  const { id } = req.query
-
-  const last_project_id = projects[projects.length - 1].id
-
-  let data = getData(projects, id)
-
-  if (!data) {
-    console.log('There was a problem getting the project.')
-  }
-
-  data.next_id = Number(id) + 1
-  data.prev_id = Number(id) - 1
-
-  if (Number(id) === 1) {
-    data.prev_id = last_project_id
-  }
-
-  if (Number(id) === last_project_id) {
-    data.next_id = 1
-  }
-
-  const project = pug.compileFile('views/project.pug')
-
-  res.setHeader('Content-Type', 'text/html')
-  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
-
-  res.send(project(data))
-})
-
 app.get('/api/details', (req, res) => {
   const { id, page } = req.query
 
