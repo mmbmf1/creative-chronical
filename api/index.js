@@ -19,9 +19,13 @@ app.get('/api', (req, res) => {
 })
 
 app.get('/api/nav', (req, res) => {
+  const { id } = req.query
+
+  const nav = pug.compileFile('views/nav.pug')
+
   res.setHeader('Content-Type', 'text/html')
   res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
-  res.render('nav')
+  res.send(nav({ id }))
 })
 
 app.get('/api/about', (req, res) => {
