@@ -2,14 +2,17 @@ const express = require('express')
 const app = express()
 const path = require('path')
 const pug = require('pug')
-import projects from '../assets/projects'
-import details from '../assets/details'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.SUPABASE_URL
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 app.set('views', path.join(__dirname, '../views'))
 app.set('view engine', 'pug')
 
 function getData(data, id) {
-  return data.find(({ id: project_id }) => project_id === Number(id))
+  return data.find(({ id: project_id }) => Number(project_id) === Number(id))
 }
 
 app.get('/api', (req, res) => {
@@ -34,8 +37,10 @@ app.get('/api/about', (req, res) => {
   res.render('about')
 })
 
-app.get('/api/projects', (req, res) => {
+app.get('/api/projects', async (req, res) => {
   const { page } = req.query
+
+  let { data: projects, error } = await supabase.from('projects').select('*')
 
   const itemsPerPage = 6
   const startIndex = (page - 1) * itemsPerPage
@@ -59,14 +64,22 @@ app.get('/api/projects', (req, res) => {
   )
 })
 
-app.get('/api/details', (req, res) => {
+app.get('/api/details', async (req, res) => {
   const { id, page } = req.query
+
+  let { data: details, error: details_error } = await supabase
+    .from('details')
+    .select('*')
 
   let data = getData(details, id)
 
   if (!data) {
     console.log('There was a problem getting the project details.')
   }
+
+  let { data: projects, error: projects_error } = await supabase
+    .from('projects')
+    .select('*')
 
   const { name, image_url } = getData(projects, id)
 
@@ -88,8 +101,10 @@ app.get('/api/details', (req, res) => {
   res.send(project(data))
 })
 
-app.get('/api/image', (req, res) => {
+app.get('/api/image', async (req, res) => {
   const { id, page } = req.query
+
+  let { data: projects, error } = await supabase.from('projects').select('*')
 
   const { image_url } = getData(projects, id)
 
