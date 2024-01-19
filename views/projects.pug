@@ -7,7 +7,7 @@
         hx-get=`/api/projects?page=${page}`,
         hx-target='#container'
       )= page
-ul.grid.grid-cols-3.gap-4.mt-4
+ul.grid.grid-cols-1.gap-4.mt-4(class='md:grid-cols-3')
   each project in projects
     li.relative
       .flex
