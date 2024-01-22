@@ -19,5 +19,6 @@ ul.grid.grid-cols-1.gap-4.mt-2(class='md:grid-cols-3')
           alt='',
           hx-get=`/api/details?id=${project.id}&page=${current_page}`,
           hx-trigger='click',
-          hx-target=`#projectImage${project.id}`
+          hx-target=`#projectImage${project.id}`,
+          hx-indicator=`#loading${project.id}`
         )
