@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lorem ipsum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/htmx.min.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body class="mx-4">
+    <div id="nav" hx-get="/api/nav?id=projects" hx-trigger="load"></div>
+    <div id="container" hx-trigger="load"></div>
+  </body>
+  <script>
+    {
+      document
+        .getElementById('container')
+        .setAttribute('hx-get', `/api/projects?${document.URL.split('?')[1]}`)
+    }
+  </script>
+</html>
