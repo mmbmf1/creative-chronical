@@ -10,10 +10,10 @@ ul.grid.grid-cols-1.gap-4.mt-2(class='md:grid-cols-3')
   each project in projects
     li.relative
       .flex
-        p.leading-5.htmx-indicator(id=`loading${project.id}`) Loading...
+        p.text-xs.leading-5.htmx-indicator(id=`loading${project.id}`) Loading...
       .image-container.rounded-md(id=`projectImage${project.id}`)
         img.cursor-pointer.rounded-md(
-          class='hover:border-2 hover:border-gray-300',
+          class='hover:opacity-70',
           src=project.image_url,
           alt='',
           hx-get=`/api/details?id=${project.id}&page=${current_page}`,
