@@ -23,10 +23,17 @@
 
       document
         .getElementById('nav')
-        .setAttribute('hx-get', `/api/nav?id=${location}`)
+        .setAttribute(
+          'hx-get',
+          `/api/nav?id=${
+            location.includes('projects') ? location.split('?')[0] : location
+          }`
+        )
+
       document
         .getElementById('container')
         .setAttribute('hx-get', `/api/${location}`)
+
       location === 'home'
         ? document
             .getElementById('container')
