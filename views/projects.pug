@@ -4,7 +4,8 @@
     a.cursor-pointer.text-lg.text-blue-700.pb-1.border-b-2.mr-4(
       class=`hover:border-blue-500 hover:text-blue-300 ${isActivePage ? 'border-blue-500':'border-transparent'}`,
       hx-get=`/api/projects?page=${page}`,
-      hx-target='#container'
+      hx-target='#container',
+      hx-push-url=`?projects&page=${page}`
     )= page
 ul.grid.grid-cols-1.gap-4.mt-2(class='md:grid-cols-3')
   each project in projects
