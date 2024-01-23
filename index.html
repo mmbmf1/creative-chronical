@@ -10,6 +10,14 @@
   </head>
   <body class="mx-4">
     <div id="nav" hx-get="/api/nav?id=home" hx-trigger="load"></div>
-    <div id="container" hx-get="/api" hx-trigger="load"></div>
+    <div id="container" hx-trigger="load"></div>
   </body>
+  <script>
+    {
+      console.log(document.URL)
+      document
+        .getElementById('container')
+        .setAttribute('hx-get', `/api/?${document.URL}`)
+    }
+  </script>
 </html>

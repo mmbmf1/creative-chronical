@@ -5,22 +5,30 @@ header.my-4.pb-4.border-b.border-slate-300
       hx-get='/api/nav?id=home',
       hx-target='#nav'
     )
-      span(hx-get='/api', hx-target='#container') First Last
+      span(hx-get='/api', hx-target='#container', hx-push-url='/') First Last
     a.whitespace-nowrap.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.mr-6(
       class=`${id === 'about'? 'border-blue-500':'border-transparent'} hover:text-blue-300`,
       hx-get='/api/nav?id=about',
       hx-target='#nav'
     )
-      span(hx-get='/api/about', hx-target='#container') About
+      span(hx-get='/api/about', hx-target='#container', hx-push-url='/about') About
     a.whitespace-nowrap.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.mr-6(
       class=`${id === 'projects'? 'border-blue-500':'border-transparent'} hover:text-blue-300`,
       hx-get='/api/nav?id=projects',
       hx-target='#nav'
     )
-      span(hx-get='/api/projects?page=1', hx-target='#container') Projects
+      span(
+        hx-get='/api/projects?page=1',
+        hx-target='#container',
+        hx-push-url='/projects?page=1'
+      ) Projects
     a.whitespace-nowrap.cursor-pointer.text-lg.text-blue-700.pb-5.border-b-2.mr-6(
       class=`${id === 'contact'? 'border-blue-500':'border-transparent'} hover:text-blue-300`,
       hx-get='/api/nav?id=contact',
       hx-target='#nav'
     )
-      span(hx-get='/api/contact', hx-target='#container') Contact
+      span(
+        hx-get='/api/contact',
+        hx-target='#container',
+        hx-push-url='/contact'
+      ) Contact
