@@ -13,7 +13,7 @@
     <div id="container" hx-trigger="load"></div>
   </body>
   <script>
-    {
+    function handleUpdateUrl() {
       let location = document.URL.split('?')
       location = location.length > 1 ? location[1] : 'home'
 
@@ -40,5 +40,6 @@
             .setAttribute('hx-push-url', `?${location}`)
         : null
     }
+    window.onload = handleUpdateUrl()
   </script>
 </html>
